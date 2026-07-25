@@ -164,6 +164,10 @@
           <option value="letra_z">Letra Z</option>
           <option value="letra_u">Letra U</option>
           <option value="letra_c">Letra C</option>
+          <option value="letra_e">Letra E</option>
+          <option value="letra_f">Letra F</option>
+          <option value="letra_n">Letra N</option>
+          <option value="letra_i">Letra I</option>
           <option value="marco">Marco o cuadro</option>
           <option value="cruz">Cruz</option>
           <option value="estrella">Estrella</option>
@@ -684,6 +688,22 @@ function checkWin(card){
     const pts = [...colCells(0,numRows), ...rowCells(0,numCols), ...rowCells(numRows-1,numCols)];
     return cellsComplete(rows,hitGrid,pts);
   }
+  if(mode==='letra_e'){
+    const pts_e = [...colCells(0,numRows), ...rowCells(0,numCols), ...rowCells(midRow,numCols), ...rowCells(numRows-1,numCols)];
+    return cellsComplete(rows,hitGrid,pts_e);
+  }
+  if(mode==='letra_f'){
+    const pts_f = [...colCells(0,numRows), ...rowCells(0,numCols), ...rowCells(midRow,numCols)];
+    return cellsComplete(rows,hitGrid,pts_f);
+  }
+  if(mode==='letra_n'){
+    const pts_n = [...colCells(0,numRows), ...colCells(numCols-1,numRows), ...mainDiagCells(numRows,numCols)];
+    return cellsComplete(rows,hitGrid,pts_n);
+  }
+  if(mode==='letra_i'){
+    const pts_i = [...colCells(midCol,numRows), ...rowCells(0,numCols), ...rowCells(numRows-1,numCols)];
+    return cellsComplete(rows,hitGrid,pts_i);
+  }
   if(mode==='marco'){
     const pts = borderCells(numRows,numCols);
     return cellsComplete(rows,hitGrid,pts);
@@ -703,7 +723,9 @@ const WIN_MODE_LABELS = {
   line_h:'Línea horizontal', line_v:'Línea vertical (cualquier letra)', diag:'Línea diagonal',
   doble_line:'Doble línea', full:'CARTÓN LLENO', corners:'Cuatro esquinas',
   letra_x:'Letra X', letra_t:'Letra T', letra_l:'Letra L', letra_h:'Letra H',
-  letra_z:'Letra Z', letra_u:'Letra U', letra_c:'Letra C', marco:'Marco o cuadro', cruz:'Cruz', estrella:'Estrella',
+  letra_z:'Letra Z', letra_u:'Letra U', letra_c:'Letra C',
+  letra_e:'Letra E', letra_f:'Letra F', letra_n:'Letra N', letra_i:'Letra I',
+  marco:'Marco o cuadro', cruz:'Cruz', estrella:'Estrella',
   col_B:'Vertical letra B', col_I:'Vertical letra I', col_N:'Vertical letra N',
   col_G:'Vertical letra G', col_O:'Vertical letra O'
 };
